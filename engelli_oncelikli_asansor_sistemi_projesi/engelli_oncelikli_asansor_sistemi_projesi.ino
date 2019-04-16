@@ -13,9 +13,9 @@ int asansr_led=4;
 int sinyal_led=5;
 
 
-byte ID[4]={89,58,201,86};
-byte ssPins[]={SS_1_PIN, SS_2_PIN};
-MFRC522 mfrc522[NR_OF_READERS];
+byte ID[4]={89,58,201,86}; //sistemde kaytlı bulunan kartı kullanabilmek için ID sini tanımladım.
+byte ssPins[]={SS_1_PIN, SS_2_PIN}; // İki adet RFID kullandığım için bu tanımlamayı yaptım.
+MFRC522 mfrc522[NR_OF_READERS];  // iki RFID in bağlantısını kurmuş oldum.
 
 
 
@@ -35,8 +35,8 @@ while(!Serial);
 SPI.begin();
 
 
-for(uint8_t reader=0; reader<NR_OF_READERS; reader++){
-  mfrc522[reader].PCD_Init(ssPins[reader], RST_PIN);
+for(uint8_t reader=0; reader<NR_OF_READERS; reader++){ 
+  mfrc522[reader].PCD_Init(ssPins[reader], RST_PIN); // RFID kullanıma başlamış oldu.
   }
 
 }
