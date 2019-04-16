@@ -48,16 +48,16 @@ void loop() {
   for(uint8_t reader=0; reader<NR_OF_READERS; reader++){
      if (mfrc522[reader].PICC_IsNewCardPresent() && mfrc522[reader].PICC_ReadCardSerial())
     {
-        if(mfrc522[reader].uid.uidByte[0]==ID[0] &&
-           mfrc522[reader].uid.uidByte[1]==ID[1] &&
+        if(mfrc522[reader].uid.uidByte[0]==ID[0] &&     // Burada sistemde naımlı olmuş olan kartın ID si ile okutulumuş olan kartın ID si karşılaştırılmış oluyor.
+           mfrc522[reader].uid.uidByte[1]==ID[1] &&     // Eğer ID ler aynı ise işlemlere geçiyor.
            mfrc522[reader].uid.uidByte[2]==ID[2] &&
            mfrc522[reader].uid.uidByte[3]==ID[3] ){
             
-            if(reader==0 && reader!=1){
+            if(reader==0 && reader!=1){                // Program içerisinde Yazılı olan ifadeler, Programın doğru çalışıp çalışmadığını kontrol amaçlıdır.
               
-               digitalWrite(asansr_led,HIGH);
+               digitalWrite(asansr_led,HIGH);          // reader 0 ve reader 1 olarak ifade edilen kavram RFID 1 ve RFID 2 dir.
    
-              Serial.println(" asansöre sinyal gönderiliyor");
+              Serial.println(" asansöre sinyal gönderiliyor");  
               delay(100);
 
            
