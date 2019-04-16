@@ -2,7 +2,7 @@
 
 #include <MFRC522.h>
 
-#define RST_PIN        9
+#define RST_PIN        9    //Tanımlamalar
 #define SS_1_PIN       8
 #define SS_2_PIN       10
 #define NR_OF_READERS  2
@@ -21,14 +21,14 @@ MFRC522 mfrc522[NR_OF_READERS];  // iki RFID in bağlantısını kurmuş oldum.
 
 
 
-void setup() {
-pinMode(kirmizi_led,OUTPUT);
+void setup() {                   // Ledlerin bağlı olduğu pinlere isim vermiş atamıştık. 
+pinMode(kirmizi_led,OUTPUT);     // Bu pinleri çıkış olarak tanımlamış olduk.
 pinMode(asansr_led,OUTPUT);
 pinMode(sinyal_led,OUTPUT);
 
 
-digitalWrite(kirmizi_led,LOW);
-digitalWrite(asansr_led,LOW);
+digitalWrite(kirmizi_led,LOW);    // program ilk çalıştığında napayım ben diyor.
+digitalWrite(asansr_led,LOW);     // Bunun için ilk başta LOW(düşük) olarak tanımlıyoruz yani ledler başalangıçta yanmayacak.
 digitalWrite(sinyal_led,LOW);
 Serial.begin(9600);
 while(!Serial);
@@ -61,7 +61,7 @@ void loop() {
               delay(100);
 
            
-               for(int i=0; i<10; i++){
+               for(int i=0; i<10; i++){             // Ben engelli geçisi için ledle sinyal verdim o yüzden bunu kullamdım siz buzzer da kullanabilirsiniz.
                
                 Serial.println(" uyarı sinyali");
                 digitalWrite(sinyal_led,HIGH);
